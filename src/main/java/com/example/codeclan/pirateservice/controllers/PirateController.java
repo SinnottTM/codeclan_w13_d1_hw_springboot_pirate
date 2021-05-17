@@ -26,14 +26,8 @@ public class PirateController {
 
 //  Note the use of {} for browser info, the @PathVariable to convert the passed in info to a Long id
 //  SHOW (by ID)
-    @GetMapping(value="/pirate/{id}")
+    @GetMapping(value="/pirates/{id}")
     public Optional<Pirate> getPirate(@PathVariable Long id){
         return pirateRepository.findById(id);
     }
-
-//    @GetMapping(value="/pirates/{name}")
-//    public List<Pirate> getPiratebyName(@PathVariable String name){
-//        return pirateRepository.findOne(name);
-//    }
-
 }

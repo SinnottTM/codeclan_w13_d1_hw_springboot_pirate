@@ -1,7 +1,9 @@
 package com.example.codeclan.pirateservice;
 
 import com.example.codeclan.pirateservice.models.Pirate;
+import com.example.codeclan.pirateservice.models.Ship;
 import com.example.codeclan.pirateservice.repositories.PirateRepository;
+import com.example.codeclan.pirateservice.repositories.ShipRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +19,21 @@ class PirateserviceApplicationTests {
 	@Autowired
 	PirateRepository pirateRepository;
 
-//	Checks if app can load to begin with, this will fail if the app is already running
+	@Autowired
+	ShipRepository shipRepository;
+
+	//	Checks if app can load to begin with, this will fail if the app is already running
 	@Test
 	void contextLoads() {
 	}
 
 	@Test
-	public void createPirate(){
-		Pirate jack = new Pirate("Jack", "Sparrow", 32);
-		pirateRepository.save(jack);
+	public void createPirateAndShip(){
+		Ship ship = new Ship("The Flying Dutchman");
+		shipRepository.save(ship);
+
+		Pirate pirate1 = new Pirate("Jack", "Sparrow", 32, ship);
+		pirateRepository.save(pirate1);
 	}
 
 }
